@@ -1,0 +1,16 @@
+--planning
+Develope a semi-digital and semi-manual inventory system to help the {{TILE}}.
+By using laravel as fast and secure for the web based system for backend and for frontend we using Bootstrap vitejs for design and for more interactive design.
+for manipulating the data from frontend we use Javascrip ES6 DOM manipulation
+
+--analysis
+How to less paper and work for the workers?
+--Providing system that has inventory to get their used ingridients
+How to easily manage the inventory by admin?
+--Providing admin dashboard that has monitoring all the products
+
+--Design
+-By sketching the output and by the help of Bootstrap template for fast developement
+
+--Coding
+we install nodejs, xampp, composer, and vscode. Language the we are using is php and JS. We Laravel framework for fast developement
