@@ -19,10 +19,8 @@ return new class extends Migration
             $table->string('category');
             $table->integer('qnty');
             $table->string('unit');
-            $table->unsignedBigInteger('updated_by');
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
