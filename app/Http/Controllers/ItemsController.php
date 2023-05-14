@@ -23,12 +23,12 @@ class ItemsController extends Controller
     }
     public function recipe(Request $request)
     {
-         $total =0;
+        $total =0;
         foreach ($request->items as $key => $value) {      
-            $enc =json_encode($value); 
-            $item= json_decode($enc);
-           $stock =Items::whereId( $item->id)->first()->qnty;
-           $total = Items::whereId(json_decode($enc)->id)->update(["qnty"=> $stock - ($item->qnty*$request->servings) ]);
+            $enc    = json_encode($value); 
+            $item   = json_decode($enc);
+            $stock  =  Items::whereId($item->id)->first()->qnty;
+           $total   = Items::whereId($item->id)->update(["qnty"=> $stock - ($item->qnty * $request->servings) ]);
         }
         return Response::json( $total );
         // $item=Items::create($request->all());
