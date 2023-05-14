@@ -2,13 +2,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 id="modal-title">Record Item</h1>
+            <h1 id="modal-title">Add Recipe</h1>
             </div>
             <div class="modal-body">
                 <form id="set-Model" class="form-horizontal">
-                <div class="form-group"> 
-                     <div class="input-group input-group-lg mb-2">
-                        <input  class="form-control border border-info-subtle rounded w-100" type="text" name="venue" id="venue" placeholder="How much did you use?" required>
+                <div class="form-group" id="from_group">
+                    <div class="input-group input-group-lg mb-2">
+                        <input  class="form-control border border-info-subtle rounded w-100" type="number" name="servings" id="servings" placeholder="Servings" required>
                     </div> 
                 </div>
                 </form>

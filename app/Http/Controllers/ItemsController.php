@@ -10,29 +10,41 @@ class ItemsController extends Controller
 {
     public function index(Request $request)
     {
-        $items=Items::whereNull('deleted_at')
+        $item=Items::whereNull('deleted_at')
                         //    ->where('name', 'like', "%{$request->key}%")
                             ->get();
-        return response()->json($items);
+        return response()->json($item);
     }
 
     public function save(Request $request)
     {
-        $items=Items::create($request->all());
-        return Response::json($items, 200);
+        $item=Items::create($request->all());
+        return Response::json($item, 200);
+    }
+    public function recipe(Request $request)
+    {
+         $total =0;
+        foreach ($request->items as $key => $value) {      
+            $enc =json_encode($value); 
+            $item= json_decode($enc);
+           $stock =Items::whereId( $item->id)->first()->qnty;
+           $total = Items::whereId(json_decode($enc)->id)->update(["qnty"=> $stock - ($item->qnty*$request->servings) ]);
+        }
+        return Response::json( $total );
+        // $item=Items::create($request->all());
     }
 
-    public function update(Request $request, Items $items)
+    public function update(Request $request, Items $item)
     {
         $input=$request->all();
-        $items->update($input);
-        return Response::json($items, 201);
+        $item->update($input);
+        return Response::json($item, 201);
     }
 
-    public function destroy(Items $items)
+    public function destroy(Items $item)
     {
-        $items->deleted_at=now();
-        $items->update();
+        $item->deleted_at=now();
+        $item->update();
         return Response::json(array('success'=>true));
     }
 }

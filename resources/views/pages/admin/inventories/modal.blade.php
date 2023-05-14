@@ -6,7 +6,6 @@
             </div>
             <div class="modal-body">
                 <form id="set-Model" class="form-horizontal">
-                    <input type="hidden" name="updated_by" value="{{ Auth::user()->id }}">
                 <div class="form-group">
                     <div class="input-group input-group-lg mb-2">
                         <input  class="form-control border border-info-subtle rounded w-100" type="text" name="name" id="name" placeholder="Item Name" required>
@@ -30,6 +29,12 @@
                         </option>
                         <option value="kg/s">
                            Kilogram
+                        </option>
+                        <option value="L">
+                           Liter
+                        </option>
+                        <option value="pc/s">
+                           Pieces
                         </option>
                         </select>
                     </div>

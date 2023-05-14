@@ -17,16 +17,16 @@ class ItemsSeeder extends Seeder
     {
         DB::table('items')->insert([
             [
-            'name'          =>'paminta',
+            'name'          =>'Manok',
             'category'      =>'seassoning',
-            'qnty'          => 3,
-            'unit'          => "pinch/es",
+            'qnty'          => 90,
+            'unit'          => "kg/s",
             ],
             [
-            'name'          =>'paminta',
+            'name'          =>'Toyo',
             'category'      =>'seassoning',
-            'qnty'          => 3,
-            'unit'          => "pinch/es",
+            'qnty'          => 34,
+            'unit'          => "L",
             ],
         ]);
     }

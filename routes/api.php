@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\RecipeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,14 @@ Route::prefix('/items')->group(function(){
     route::get('/list', [ItemsController::class, 'list']);
     route::put('/{item}/update', [ItemsController::class, 'update']);
     route::post('/save', [ItemsController::class, 'save']);
+    route::post('/recipes/save', [ItemsController::class, 'recipe']);
     route::delete('/{item}/destroy', [ItemsController::class, 'destroy']);
+});
+// Recipe
+Route::prefix('/recipes')->group(function(){
+    route::get('/', [RecipeController::class, 'index']);
+    route::get('/list', [RecipeController::class, 'list']);
+    route::put('/{recipe}/update', [RecipeController::class, 'update']);
+    route::post('/save', [RecipeController::class, 'save']);
+    route::delete('/{recipe}/destroy', [RecipeController::class, 'destroy']);
 });

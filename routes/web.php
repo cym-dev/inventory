@@ -21,7 +21,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin/inventory', function(){return view('pages.admin.inventories.index');})->name('admin/inventory');
 Route::get('/admin', function(){return view('pages.admin.dashboard.index');})->name('admin/dashboard');
+Route::get('/admin/inventory', function(){return view('pages.admin.inventories.index');})->name('admin/inventory');
+Route::get('/admin/recipe', function(){return view('pages.admin.recipes.index');})->name('admin/recipe');
 
-Route::get('/employee', function(){return view('pages.employee.inventories.index');})->name('employee/dashboard');
+Route::get('/employee', function(){return view('pages.employee.recipes.index');})->name('employee/dashboard');

@@ -21,7 +21,7 @@
     <!-- Sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
-    @vite(['resources/css/bootstrap.min.css', 'resources/js/bootstrap.bundle.min.js'])
+    @vite(['resources/css/bootstrap.min.css', 'resources/js/bootstrap.bundle.min.js', 'resources/css/app.css'])
 </head>
 <body>
     <div id="app">
@@ -32,9 +32,6 @@
                 </a>
                 <a class="navbar-brand" href="/{{ Auth::user()->role }}/inventory">
                    Inventory
-                </a>
-                <a class="navbar-brand" href="/{{ Auth::user()->role }}/employee">
-                   Employee
                 </a>
                 <a class="navbar-brand" href="/{{ Auth::user()->role }}/recipe">
                    Recipe

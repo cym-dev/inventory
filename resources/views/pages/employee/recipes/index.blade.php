@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.employee')
 
 @section('content')
 <div class="container">
@@ -6,8 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h1>{{ __('Inventory') }}</h1>
-                    <button id="btn-new"  data-bs-target= "#main-modal" data-bs-toggle= "modal" type="button" class="btn btn-info">+</button>
+                    <h1>{{ __('Recipes') }}</h1>
                 </div>
                
                 <div class="card-body">
@@ -16,8 +15,7 @@
             <thead>
                 <th>#</th>
                 <th>Name</th>
-                <th>Mesurement</th>
-                <th>Category</th>
+                <th>Ingridients</th>
                 <th>Action</th>
             </thead>
             <tbody id="tbody">
@@ -25,7 +23,7 @@
             </tbody>
              </table>
                 </div>
-                    @include('pages.admin.inventories.modal')
+                    @include('pages.employee.recipes.modal')
 
                 </div>
             </div>
@@ -35,5 +33,5 @@
 @endsection
 
 @section('javascript')    
-    <script  type="module" src="{{ asset('js/admin/inventory/index.js') }}"></script>
+    <script  type="module" src="{{ asset('js/employee/recipe/index.js') }}"></script>
 @endsection

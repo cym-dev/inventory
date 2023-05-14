@@ -12,7 +12,7 @@ class Items extends Model
         'name',
         'category',
         'qnty',
-        'updatedBy',
+        'deletedAt',
         'unit',
     ];
 }

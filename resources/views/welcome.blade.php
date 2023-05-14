@@ -58,9 +58,9 @@
                             @enderror
                             <label class="form-label" for="form3Example4">Password</label>
                         </div>
-
                         <div class="d-flex justify-content-between align-items-center">
 
+                        <a class="" href="{{ route('register') }}">{{ __('Register as Employee?') }}</a>
                         <div class="text-center text-lg-start mt-4 pt-2">
                             <button type="submit" class="btn btn-primary btn-lg"
                             style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
