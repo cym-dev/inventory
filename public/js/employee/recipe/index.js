@@ -120,7 +120,7 @@ const state = {
         await $("#body").append(tr);
         if (isLow) {
             await $("#para").html(
-                "If some Ingridients are negative please approach your manager to check the Ingridients going out or out of stock"
+                "Some ingridients is Low or not enougth to serve this order please aware the manager/admin to check the out of stock or running low!"
             );
         }
     },

@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 id="modal-title">Report of stock used ingridients</h1>
+            <h3 id="modal-title">Report of stock used ingridients</h3>
             </div>
             <div class="modal-body">
                <div class="table-wrapper-scroll-y my-custom-scrollbar">
