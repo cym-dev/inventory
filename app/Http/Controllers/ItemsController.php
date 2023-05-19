@@ -12,8 +12,10 @@ class ItemsController extends Controller
     {
         $item=Items::whereNull('deleted_at')
                         //    ->where('name', 'like', "%{$request->key}%")
-                            ->get();
-        return response()->json($item);
+                            ->get()->sortBy('qnty'); 
+        $sorted = $item;
+       
+        return response()->json( $sorted->values()->all());
     }
 
     public function save(Request $request)
@@ -23,12 +25,14 @@ class ItemsController extends Controller
     }
     public function recipe(Request $request)
     {
-        $total =0;
+        $total =[];
         foreach ($request->items as $key => $value) {      
             $enc    = json_encode($value); 
             $item   = json_decode($enc);
             $stock  =  Items::whereId($item->id)->first()->qnty;
-           $total   = Items::whereId($item->id)->update(["qnty"=> $stock - ($item->qnty * $request->servings) ]);
+            Items::whereId($item->id)->update(["qnty"=> $stock - ($item->qnty * $request->servings) ]);
+            $update  =  Items::whereId($item->id)->first();
+           array_push($total, $update);
         }
         return Response::json( $total );
         // $item=Items::create($request->all());

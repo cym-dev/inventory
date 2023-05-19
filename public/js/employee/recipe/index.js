@@ -45,10 +45,6 @@ const state = {
             await state.models.forEach(
                 async (model, i) => await state.writter(model, i)
             );
-        if (state.items)
-            await state.items.forEach(
-                async (model, i) => await state.handleAddItem(model, i, 0)
-            );
     },
 
     writter: async (model, i) => {
@@ -69,7 +65,7 @@ const state = {
             "data-bs-target": "#main-modal",
             "data-bs-toggle": "modal",
             class: "btn btn-info edit-btn px-3 py-2 me-1",
-            html: `<i class="bi bi-pen"></i>`,
+            html: `<i class="fa-solid fa-clipboard"></i>`,
         }).appendTo(td);
         tr.append(td);
         await $("#tbody").append(tr);
@@ -82,7 +78,7 @@ const state = {
     },
     onShow: async (i) => {
         state.activeIndex = i;
-        state.btnEngrave.innerHTML = "Update";
+        state.btnEngrave.innerHTML = "Input Servings";
         state.selectedItems = state.models[i].list;
         state.btnEngrave.addEventListener("click", state.onStore);
         state.btnEngrave.setAttribute("data-id", state.models[i].id);
@@ -92,15 +88,8 @@ const state = {
         let params = $("#set-Model").serializeArray();
         let pk = state.btnEngrave.getAttribute("data-id");
         let models = await fetch.update(state.entity, pk, params);
+        console.log(models);
         if (models) {
-            console.log(models);
-            state.models[state.activeIndex] = models;
-            $("tbody").empty();
-            if (state.models)
-                await state.models.forEach(
-                    async (model, i) => await state.writter(model, i)
-                );
-
             $("#modal-main").modal("hide");
         }
     },
@@ -110,13 +99,30 @@ const state = {
             { name: "items", value: state.selectedItems },
             { name: "servings", value: $("#servings").val() },
         ]);
-        state.models.push(models);
-        $("tbody").empty();
-        if (state.models)
-            await state.models.forEach(
-                async (model, i) => await state.writter(model, i)
+        var isLow = false;
+        if (models) {
+            await models.forEach(async (model, i) => {
+                if (!isLow && model.qnty < 3) {
+                    isLow = true;
+                }
+                await state.updateWritter(model, i, isLow);
+            });
+        }
+        $("#update-modal").modal("show");
+        // $("#modal-main").modal("show");
+    },
+    updateWritter: async (model, i, isLow) => {
+        let tr = $("<tr>", { class: `${(i + 1) % 2 == 1 ? "odd" : "even"}` });
+        $("<td>", { html: i + 1 }).appendTo(tr);
+        $("<td>", { html: model.name, class: "text-capitalize" }).appendTo(tr);
+        $("<td>", { html: model.qnty, class: "text-capitalize" }).appendTo(tr);
+
+        await $("#body").append(tr);
+        if (isLow) {
+            await $("#para").html(
+                "If some Ingridients are negative please approach your manager to check the Ingridients going out or out of stock"
             );
-        $("#modal-main").modal("hide");
+        }
     },
     onDestroy: async (i) => {
         let pk = state.models[i].id;

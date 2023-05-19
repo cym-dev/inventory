@@ -24,6 +24,7 @@
              </table>
                 </div>
                     @include('pages.employee.recipes.modal')
+                    @include('pages.employee.recipes.update')
 
                 </div>
             </div>
